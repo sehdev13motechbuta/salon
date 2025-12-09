@@ -16,15 +16,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 
     <style>
-        body { background: #f9f9f9; font-family: 'Poppins', sans-serif; }
-        .slide-img {
-            animation: slide 10s infinite linear;
-        }
-        @keyframes slide {
-            0% { transform: translateX(-100%); }
-            50% { transform: translateX(0); }
-            100% { transform: translateX(100%); }
-        }
+      body { background: #f9f9f9; font-family: 'Poppins', sans-serif; }
+.slide-img {
+animation: slide 10s infinite linear;
+}
+@keyframes slide {
+0% { transform: translateX(-100%); }
+50% { transform: translateX(0); }
+100% { transform: translateX(100%); }
+}
     </style>
 </head>
 <body class="text-gray-800">
@@ -47,7 +47,15 @@
             <img src="https://t4.ftcdn.net/jpg/03/74/32/65/360_F_374326500_IZuSyagnKizUonpTAxmG9xoJA7LLLavU.jpg" class="rounded-xl shadow-xl" />
         </div>
     </section>
-
+<style>
+@keyframes scroll {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+.animate-scroll {
+animation: scroll 20s linear infinite;
+}
+</style>
     <!-- ABOUT SECTION -->
     <section class="p-10 text-center" data-aos="fade-up">
         <h2 class="text-4xl font-bold mb-4">About Our Salon</h2>
@@ -135,6 +143,7 @@
 
 </body>
 </html>
+
 
 
 
