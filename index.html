@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salon Website</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- QR Code Generator -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+    <style>
+        body { background: #f9f9f9; font-family: 'Poppins', sans-serif; }
+        .slide-img {
+            animation: slide 10s infinite linear;
+        }
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- HEADER -->
+    <header class="bg-black text-white p-6 text-center text-3xl font-bold shadow-lg">
+        Lux Salon & Beauty Studio
+    </header>
+
+    <!-- HERO WITH SLIDING IMAGES -->
+    <section class="overflow-hidden w-full py-10 bg-gray-100">
+        <div class="flex space-x-10 slide-img">
+            <img src="https://via.placeholder.com/300x200" class="rounded-xl shadow-xl" />
+            <img src="https://via.placeholder.com/300x200" class="rounded-xl shadow-xl" />
+            <img src="https://via.placeholder.com/300x200" class="rounded-xl shadow-xl" />
+            <img src="https://via.placeholder.com/300x200" class="rounded-xl shadow-xl" />
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="p-10 text-center" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-4">About Our Salon</h2>
+        <p class="max-w-3xl mx-auto text-lg text-gray-600">
+            We are a premium beauty salon offering hair styling, makeup, spa, and grooming services. 
+            Our expert team ensures luxurious care with modern techniques.
+        </p>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="p-10 bg-gray-50" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-8">Our Team</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="p-6 bg-white rounded-xl shadow-lg text-center">
+                <img src="https://via.placeholder.com/150" class="mx-auto rounded-full mb-4" />
+                <h3 class="text-xl font-bold">Sarah</h3>
+                <p class="text-gray-500">Hair Stylist</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-lg text-center">
+                <img src="https://via.placeholder.com/150" class="mx-auto rounded-full mb-4" />
+                <h3 class="text-xl font-bold">John</h3>
+                <p class="text-gray-500">Makeup Artist</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-lg text-center">
+                <img src="https://via.placeholder.com/150" class="mx-auto rounded-full mb-4" />
+                <h3 class="text-xl font-bold">Emma</h3>
+                <p class="text-gray-500">Spa Specialist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="p-10" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-8">Gallery</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <img src="https://via.placeholder.com/250" class="rounded-xl shadow-md" />
+            <img src="https://via.placeholder.com/250" class="rounded-xl shadow-md" />
+            <img src="https://via.placeholder.com/250" class="rounded-xl shadow-md" />
+            <img src="https://via.placeholder.com/250" class="rounded-xl shadow-md" />
+        </div>
+    </section>
+
+    <!-- YOUTUBE VIDEO -->
+    <section class="p-10 text-center bg-gray-50" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6">Our YouTube Channel</h2>
+        <iframe width="560" height="315" class="mx-auto rounded-xl shadow-lg"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="p-10" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-6">Send Us an Email</h2>
+        <form class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-lg">
+            <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 border rounded" />
+            <input type="email" placeholder="Your Email" class="w-full p-3 mb-4 border rounded" />
+            <textarea placeholder="Message" class="w-full p-3 mb-4 border rounded"></textarea>
+            <button class="w-full bg-black text-white p-3 rounded">Send Email</button>
+        </form>
+    </section>
+
+    <!-- GOOGLE MAP -->
+    <section class="p-10 bg-gray-50" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-6">Find Us on Google Maps</h2>
+        <iframe class="w-full max-w-4xl mx-auto h-96 rounded-xl shadow-lg"
+            src="https://maps.google.com/maps?q=New%20Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </section>
+
+    <!-- QR CODE + WHATSAPP -->
+    <section class="p-10 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Quick Access</h2>
+        <canvas id="qr" class="mx-auto mb-6"></canvas>
+        <a href="https://wa.me/911234567890" class="bg-green-500 text-white p-3 rounded text-xl">Chat on WhatsApp</a>
+
+        <script>
+            var qr = new QRious({
+                element: document.getElementById('qr'),
+                value: 'https://example.com',
+                size: 200
+            });
+        </script>
+    </section>
+
+    <footer class="text-center p-6 bg-black text-white mt-10">© 2025 Salon Website | All Rights Reserved</footer>
+
+</body>
+</html>
