@@ -1,431 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GlamAura Salon - Premium Experience</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosin Khan | Ultra-Luxury Salon</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark: #0f0f0f;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-light: #e0e0e0;
+        }
 
-<!-- Animate CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
+        body {
+            background-color: var(--dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
-<!-- Bootstrap for Modal -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        /* --- Header & Nav --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: 0.5s;
+            padding: 20px 5%;
+        }
 
-<style>
-/* GLOBAL */
-html, body { scroll-behavior: smooth; }
+        header.scrolled {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 5%;
+            border-bottom: 1px solid var(--glass-border);
+        }
 
-/* Glass Card */
-.glass-card {
-  backdrop-filter: blur(20px) saturate(180%);
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 20px;
-  transition: 0.4s ease;
-}
-.glass-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(0,255,255,0.35);
-}
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Neon Button */
-.neon-btn {
-  background: linear-gradient(135deg,#00eaff,#007bff);
-  box-shadow: 0 0 12px #00eaff, 0 0 24px #007bff;
-  transition: 0.3s;
-}
-.neon-btn:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 25px #00eaff, 0 0 50px #007bff;
-}
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
 
-/* Hero Slider */
-@keyframes heroSlide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.hero-slider {
-  width: 200%; height: 100%; display: flex;
-  animation: heroSlide 22s linear infinite;
-}
-.hero-slider img { width: 50%; height: 100%; object-fit: cover; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #fff; 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
 
-/* Gallery Animation */
-@keyframes slide-ltr {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-.slide-gallery { animation: slide-ltr 18s linear infinite; }
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), 
+                        url('https://www.designerhairstudio.com/images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+        }
 
-/* Fade-in Animation */
-.fade-section { opacity: 0; transform: translateY(40px); transition: 1s ease; }
-.fade-section.visible { opacity: 1; transform: translateY(0); }
-</style>
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 8vw, 80px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* --- Buttons --- */
+        .btn-gold {
+            padding: 15px 40px;
+            background: var(--gold);
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+            border: none;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.5);
+        }
+
+        /* --- Footer Icon Row (The style from your image) --- */
+        .footer-icon-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        } /* --- YouTube Section --- */
+        #youtube { padding: 80px 10%; background: #0a0a0a; }
+        .video-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px; /* Rounded corners as per image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: #fff;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .icon-box:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            color: #000;
+        }
+
+        /* --- Other Sections --- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 45px; color: #fff; }
+        .section-header .line { width: 80px; height: 3px; background: var(--gold); margin: 15px auto; }
+
+        #about { padding: 100px 10%; }
+        .about-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-text { background: var(--glass); padding: 50px; border-radius: 20px; border: 1px solid var(--glass-border); backdrop-filter: blur(5px); }
+
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 5%; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 15px; height: 400px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+        .gallery-item:hover img { transform: scale(1.1) rotate(2deg); }
+
+        .team-card { background: var(--glass); border: 1px solid var(--glass-border); padding: 20px; border-radius: 20px; text-align: center; transition: 0.4s; }
+        .team-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .team-card img { width: 150px; height: 150px; border-radius: 50%; margin-bottom: 15px; border: 3px solid var(--gold); }
+
+        .contact-box { max-width: 800px; margin: 0 auto; background: var(--glass); padding: 50px; border-radius: 30px; border: 1px solid var(--glass-border); }
+        input, textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; color: white; margin-bottom: 20px; border-radius: 10px; }
+
+        footer { padding: 80px 5% 30px; background: #050505; border-top: 1px solid var(--glass-border); }
+
+        /* Floating WhatsApp */
+        .floating-ws { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 999; transition: 0.3s; }
+        .floating-ws:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .about-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
+<body>
 
-<body class="bg-gray-950 text-white overflow-x-hidden">
+    <header id="navbar">
+        <nav>
+            <div class="logo">NOSIN KHAN</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#about">The Salon</a>
+                <a href="#portfolio">Masterpieces</a>
+                <a href="#team">Experts</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-<!-- HEADER -->
-<header class="fixed w-full top-0 z-50 bg-gray-900/60 backdrop-blur-xl shadow-lg">
-  <div class="max-w-7xl mx-auto flex items-center justify-between p-5">
-
-    <!-- LOGO -->
-    <h1 class="text-3xl font-extrabold tracking-wide text-cyan-400">
-      GlamAura Salon
-    </h1>
-
-    <!-- DESKTOP MENU -->
-    <nav class="hidden md:flex gap-8 text-lg items-center">
-      <a href="#About" class="hover:text-cyan-400 transition">About</a>
-      <a href="#gallery" class="hover:text-cyan-400 transition">Gallery</a>
-      <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
-<button class="neon-btn px-6 py-2 rounded-xl bg-purple-500" data-bs-toggle="modal" data-bs-target="#priceModal">
-  Pricing
-</button>
-      <!-- LOGIN -->
-      <button class="neon-btn px-6 py-2 rounded-xl" data-bs-toggle="modal" data-bs-target="#loginModal">
-        Login
-      </button>
-
-      <!-- SIGNUP -->
-      <button class="neon-btn px-6 py-2 rounded-xl bg-green-500" data-bs-toggle="modal" data-bs-target="#signupModal">
-        Signup
-      </button>
-       <button class="neon-btn px-6 py-2 rounded-xl bg-green-500" data-bs-toggle="modal" data-bs-target="#adminModal">
-        Admin login
-      </button>
-    </nav>
-
-    <!-- MOBILE MENU BUTTON -->
-    <button id="menu-btn" class="md:hidden text-4xl text-white">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- MOBILE DROPDOWN MENU -->
-  <div id="mobile-menu"
-       class="hidden flex flex-col bg-gray-900/95 shadow-2xl px-6 py-6 space-y-6 text-lg animate__animated animate__fadeInDown">
-
-    <a href="#About" class="hover:text-cyan-400 transition">About</a>
-    <a href="#gallery" class="hover:text-cyan-400 transition">Gallery</a>
-    <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
-<button class="neon-btn px-6 py-2 rounded-xl bg-purple-500" data-bs-toggle="modal" data-bs-target="#priceModal">
-  Pricing
-</button>
-    <!-- Mobile Buttons -->
-    <button class="neon-btn w-full py-2 rounded-xl" data-bs-toggle="modal" data-bs-target="#loginModal">
-      Login
-    </button>
-
-    <button class="neon-btn w-full py-2 rounded-xl bg-green-500" data-bs-toggle="modal" data-bs-target="#signupModal">
-      Signup
-    </button>
-       <button class="neon-btn px-6 py-2 rounded-xl bg-green-500" data-bs-toggle="modal" data-bs-target="#adminModal">
-        Admin login
-      </button>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="relative h-screen flex items-center justify-center overflow-hidden">
-  <div class="absolute inset-0 hero-slider">
-    <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=2000&q=80" />
-    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=2000&q=80" />
-  </div>
-
-  <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-gray-900/70"></div>
-
-  <div class="text-center z-10 animate__animated animate__fadeInUp">
-    <h1 class="text-6xl md:text-7xl font-extrabold text-cyan-400 mb-4">Where Beauty Meets Innovation</h1>
-    <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
-      Experience luxury grooming with futuristic ambience & advanced styling technology.
-    </p>
-    <button class="neon-btn px-10 py-3 rounded-xl text-xl">Book Now</button>
-  </div>
-</section>
-
-<!-- ABOUT SECTION -->
-<section id="About" class="py-24 fade-section max-w-6xl mx-auto px-4">
-  <h2 class="text-4xl text-center mb-6 font-bold text-cyan-400">About Us</h2>
-  <p class="glass-card p-6 text-lg leading-relaxed text-gray-200 text-center">
-     At GlamAura Salon Unisex Salon, we are committed to providing a premium grooming and beauty experience. 
-   Whether you want to book an appointment, ask a question, or know more about our services, we’re always happy to assist you..
-  </p>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="py-24 fade-section max-w-6xl mx-auto px-4">
-  <h2 class="text-4xl text-center text-cyan-400 font-bold mb-12">Our Services</h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-    <div class="glass-card p-8">
-      <h3 class="text-2xl text-cyan-400 font-bold mb-4">Hair Styling</hh3>
-      <p class="text-gray-300">Modern cuts, layered styles, and premium looks.</p>
-    </div>
-
-    <div class="glass-card p-8">
-      <h3 class="text-2xl text-pink-400 font-bold mb-4">Hair Color</h3>
-      <p class="text-gray-300">Balayage, highlights, global color & shine solutions.</p>
-    </div>
-
-    <div class="glass-card p-8">
-      <h3 class="text-2xl text-purple-400 font-bold mb-4">Skin & Facial</h3>
-      <p class="text-gray-300">Glow facials, anti-aging, and rejuvenation treatments.</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="py-24 fade-section px-4 overflow-hidden">
-  <h2 class="text-4xl text-center text-cyan-400 font-bold mb-12">Our Gallery</h2>
-  <div class="flex gap-6 whitespace-nowrap slide-gallery">
-    <img src="https://www.shutterstock.com/image-photo/adult-woman-hairdresser-stylist-gives-260nw-2700758577.jpg" class="w-80 h-64 object-cover rounded-xl" />
-    <img src="https://previews.123rf.com/images/satura86/satura861706/satura86170602394/80147170-beauty-and-people-concept-happy-young-woman-with-hairdresser-at-hair-salon.jpg" class="w-80 h-64 object-cover rounded-xl" />
-    <img src="https://thumbs.dreamstime.com/b/young-woman-looking-changes-trying-new-hairstyle-beauty-salon-empty-space-392795252.jpg" class="w-80 h-64 object-cover rounded-xl" />
-    <img src="https://st4.depositphotos.com/10614052/20443/i/1600/depositphotos_204435540-stock-photo-professional-hairdresser-working-client-beauty.jpg" class="w-80 h-64 object-cover rounded-xl" />
-  </div>
-</section>
-
-<!-- TEAM -->
-<section id="team" class="py-24 fade-section max-w-6xl mx-auto px-4">
-  <h2 class="text-4xl text-center text-cyan-400 font-bold mb-12">Meet Our Experts</h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-    <div class="glass-card p-6 text-center">
-      <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-28 h-28 mx-auto rounded-full border-cyan-400 border-4 mb-4">
-      <h3 class="text-xl font-bold text-cyan-400">Amit Sharma</h3>
-      <p class="text-gray-300">Lead Stylist</p>
-    </div>
-
-    <div class="glass-card p-6 text-center">
-      <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-28 h-28 mx-auto rounded-full border-pink-400 border-4 mb-4">
-      <h3 class="text-xl font-bold text-pink-400">Neha Gupta</h3>
-      <p class="text-gray-300">Skin Specialist</p>
-    </div>
-
-    <div class="glass-card p-6 text-center">
-      <img src="https://randomuser.me/api/portraits/men/55.jpg" class="w-28 h-28 mx-auto rounded-full border-purple-400 border-4 mb-4">
-      <h3 class="text-xl font-bold text-purple-400">Rohit Kumar</h3>
-      <p class="text-gray-300">Creative Director</p>
-    </div>
-
-    <div class="glass-card p-6 text-center">
-      <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-28 h-28 mx-auto rounded-full border-cyan-400 border-4 mb-4">
-      <h3 class="text-xl font-bold text-cyan-400">Priya Verma</h3>
-      <p class="text-gray-300">Makeup Artist</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="py-24 fade-section max-w-6xl mx-auto px-4">
-  <h2 class="text-4xl text-center text-cyan-400 font-bold mb-12">Contact Us</h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-
-    <!-- LEFT BOX -->
-    <div class="glass-card p-10 rounded-2xl space-y-8 shadow-xl">
-
-      <h3 class="text-3xl font-bold text-cyan-300 text-center">Get in Touch</h3>
-
-      <div class="space-y-5 text-lg">
-
-        <p class="flex items-center gap-4">
-          <i class="fa-solid fa-phone text-cyan-400 text-2xl"></i>
-          <span>+91 98765 43210</span>
-        </p>
-
-        <p class="flex items-center gap-4">
-          <i class="fa-solid fa-envelope text-cyan-400 text-2xl"></i>
-          <span>info@example.com</span>
-        </p>
-
-        <p class="flex items-center gap-4">
-          <i class="fa-solid fa-location-dot text-cyan-400 text-2xl"></i>
-          <span>New Delhi, India</span>
-        </p>
-      </div>
-
-      <!-- CENTERED QR CODE -->
-      <div class="flex justify-center mt-8">
-        <div class="p-3 rounded-2xl border-2 border-cyan-400 shadow-cyan-500/40 shadow-xl">
-          <img 
-            src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://yourwebsite.com"
-            class="w-52 h-52 rounded-xl"
-          >
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <p>Elegance. Style. Perfection.</p>
+            <h1>Nosin Unisex<br><span style="color: var(--gold);">Salon & Spa</span></h1>
+            <a href="#contact" class="btn-gold">Book Appointment</a>
         </div>
-      </div>
+    </section>
 
-      <p class="text-center text-gray-300 text-sm mt-3">Scan to visit our website</p>
-
-    </div>
-
-    <!-- RIGHT BOX - MAP -->
-    <div class="glass-card p-3 rounded-2xl shadow-2xl">
-      <iframe 
-        src="https://maps.google.com/maps?q=New%20Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed"
-        class="w-full h-96 rounded-xl border border-cyan-400"
-      ></iframe>
-    </div>
-
-  </div>
-</section>
-<!-- LOGIN MODAL -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-gray-900 rounded-2xl p-6 glass-card">
-
-      <div class="modal-header border-0">
-        <h2 class="text-3xl text-cyan-400 font-bold mx-auto">Login</h2>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <form class="space-y-5">
-          <input type="email" placeholder="Email Address" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-600" />
-          <input type="password" placeholder="Password" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-600" />
-          <button type="submit" class="neon-btn w-full py-3 rounded-xl text-lg">Login</button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!-- PRICE MODAL -->
- <!-- PRICE MODAL -->
-<div class="modal fade" id="priceModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content bg-gray-900 rounded-2xl p-6 glass-card">
-
-      <div class="modal-header border-0">
-        <h2 class="text-3xl text-purple-400 font-bold mx-auto">Service Price List</h2>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body space-y-6">
-
-        <!-- HAIR SERVICES -->
-        <div class="glass-card p-5 rounded-xl">
-          <h3 class="text-2xl font-bold text-cyan-400 mb-3">Hair Services</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li class="flex justify-between"><span>Hair Cut</span><span>₹399</span></li>
-            <li class="flex justify-between"><span>Layer Cut</span><span>₹699</span></li>
-            <li class="flex justify-between"><span>Hair Spa</span><span>₹999</span></li>
-            <li class="flex justify-between"><span>Hair Smoothening</span><span>₹3,999</span></li>
-          </ul>
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header" data-aos="fade-up">
+            <h2>The Experience</h2>
+            <div class="line"></div>
         </div>
-
-        <!-- SKIN SERVICES -->
-        <div class="glass-card p-5 rounded-xl">
-          <h3 class="text-2xl font-bold text-pink-400 mb-3">Skin & Facial</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li class="flex justify-between"><span>Clean Up</span><span>₹499</span></li>
-            <li class="flex justify-between"><span>Classic Facial</span><span>₹999</span></li>
-            <li class="flex justify-between"><span>Hydra Facial</span><span>₹2,499</span></li>
-            <li class="flex justify-between"><span>Brightening Facial</span><span>₹1,499</span></li>
-          </ul>
+        <div class="about-container">
+            <div class="about-img" data-aos="fade-right">
+                <img src="https://irp.cdn-website.com/e8bb2054/dms3rep/multi/what-does-it-mean-to-be-a-lux-hair-salon-1920px.jpg" style="width:100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);" alt="Interior">
+            </div>
+            <div class="about-text" data-aos="fade-left">
+                <h3 style="color:var(--gold); margin-bottom: 20px;">Redefining Beauty</h3>
+                <p style="line-height: 1.8; opacity: 0.8;">Step into a world where luxury meets precision. Nosin Khan provides an unparalleled salon experience, combining world-class techniques with a tranquil environment. From artistic hair styling to revitalizing spa treatments, we craft your look to reflect your inner beauty.</p>
+            </div>
         </div>
+    </section>
 
-        <!-- MAKEUP SERVICES -->
-        <div class="glass-card p-5 rounded-xl">
-          <h3 class="text-2xl font-bold text-purple-400 mb-3">Makeup</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li class="flex justify-between"><span>Party Makeup</span><span>₹2,999</span></li>
-            <li class="flex justify-between"><span>Engagement Makeup</span><span>₹5,999</span></li>
-            <li class="flex justify-between"><span>Bridal Makeup</span><span>₹14,999</span></li>
-          </ul>
+
+
+ <!-- YouTube Section -->
+     <section id="youtube">
+        <div class="section-header" data-aos="fade-up">
+            <h2>YouTube Channel</h2>
+            <div class="line"></div>
         </div>
+        <div class="video-wrapper" data-aos="zoom-in">
+            <div class="video-container">
+                <!-- Replace 'dQw4w9WgXcQ' with your YouTube video ID -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
 
-      </div>
 
-    </div>
-  </div>
-</div>
 
-  <!-- ADMIN MODAL -->
-<div class="modal fade" id="adminModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-gray-900 rounded-2xl p-6 glass-card">
 
-      <div class="modal-header border-0">
-        <h2 class="text-3xl text-cyan-400 font-bold mx-auto">Admin Login</h2>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
+    <!-- Gallery Section -->
+    <section id="portfolio" style="background: #0a0a0a; padding: 100px 0;">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our Masterpieces</h2>
+            <div class="line"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="zoom-in"><img src="https://e1.pxfuel.com/desktop-wallpaper/505/37/desktop-wallpaper-salon-hair-face-lip-beauty-eyebrow-beauty-parlor.jpg"></div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="C:/Users/sehdev.verma/Downloads/beautiful-woman-has-cutting-hair-hairdresser.jpg"></div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="C:/Users/sehdev.verma/Downloads/young-man-barbershop-trimming-hair.jpg"></div>
+             <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="C:/Users/sehdev.verma/Downloads/handsome-man-barber-shop-styling-hair.jpg"></div>
+         </div>
+    </section>
 
-      <div class="modal-body">
-        <form class="space-y-5">
-          <input type="email" placeholder="Email Address" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-600" />
-          <input type="password" placeholder="Password" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-600" />
-          <button type="submit" class="neon-btn w-full py-3 rounded-xl text-lg">Login</button>
-        </form>
-      </div>
+    <!-- Team Section -->
+    <section id="team" style="padding: 100px 10%;">
+        <div class="section-header" data-aos="fade-up">
+            <h2>The Experts</h2>
+            <div class="line"></div>
+        </div>
+        <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="team-card" data-aos="fade-up">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                <h4>Nosin Khan</h4>
+                <p style="color:var(--gold)">Master Stylist</p>
+            </div>
+            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg">
+                <h4>Sara Lynch</h4>
+                <p style="color:var(--gold)">Color Specialist</p>
+            </div>
+            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://randomuser.me/api/portraits/men/46.jpg">
+                <h4>David V.</h4>
+                <p style="color:var(--gold)">Barber King</p>
+            </div>
+        </div>
+    </section>
 
-    </div>
-  </div>
-</div>
+    <!-- Contact Section -->
+    <section id="contact" style="padding: 100px 5%;">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Get In Touch</h2>
+            <div class="line"></div>
+        </div>
+        <div class="contact-box" data-aos="flip-left">
+            <form>
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <textarea rows="5" placeholder="Which service are you looking for?"></textarea>
+                <button type="submit" class="btn-gold" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-<!-- SIGNUP MODAL -->
-<div class="modal fade" id="signupModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-gray-900 rounded-2xl p-6 glass-card">
+    <!-- Footer Section with Image Icons -->
+    <footer>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 class="logo">NOSIN KHAN</h2>
+            <p style="opacity: 0.6; margin-top: 10px;">Industrial Area, Sector 74, Mohali, Punjab</p>
+            
+            <!-- NEW ICON ROW FROM YOUR IMAGE -->
+            <div class="footer-icon-row">
+                <a href="https://wa.me/918708482957" class="icon-box"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:918708482957" class="icon-box"><i class="fas fa-phone-alt"></i></a>
+                <a href="SMS:+918708482957" class="icon-box"><i class="far fa-comment-dots"></i></a>
+                <a href="mailto:NosinKhan@gmail.com" class="icon-box"><i class="far fa-envelope"></i></a>
+                <a href="#" class="icon-box"><i class="fas fa-expand"></i></a>
+                <a href="#" class="icon-box"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="icon-box"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; font-size: 12px; opacity: 0.4; border-top: 1px solid #222; padding-top: 20px;">
+            © 2024 Nosin Unisex Salon. Crafted for Excellence.
+        </div>
+    </footer>
 
-      <div class="modal-header border-0">
-        <h2 class="text-3xl text-green-400 font-bold mx-auto">Signup</h2>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
+    <a href="https://wa.me/918708482957" class="floating-ws">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-      <div class="modal-body">
-        <form class="space-y-5">
-          <input type="text" placeholder="Full Name" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-600" />
-          <input type="email" placeholder="Email Address" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-600" />
-          <input type="password" placeholder="Create Password" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-600" />
-          <input type="password" placeholder="Confirm Password" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-600" />
-          <button type="submit" class="neon-btn w-full py-3 rounded-xl text-lg bg-green-500">Signup</button>
-        </form>
-      </div>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
 
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="bg-gray-900 py-10 mt-20 text-center text-gray-400 border-t border-gray-700">
-  <h3 class="text-2xl font-bold text-cyan-400 mb-3">GlamAura Salon</h3>
-  <p class="max-w-2xl mx-auto mb-6">Premium unisex salon offering world-class grooming services.</p>
-
-  <div class="flex justify-center gap-8 text-3xl mb-6">
-    <a href="#" class="hover:text-cyan-400"><i class="fab fa-facebook"></i></a>
-    <a href="#" class="hover:text-cyan-400"><i class="fab fa-instagram"></i></a>
-    <a href="#" class="hover:text-cyan-400"><i class="fab fa-youtube"></i></a>
-  </div>
-
-  <p class="text-gray-500 text-sm">© 2025 GlamAura Salon. All Rights Reserved.</p>
-</footer>
-
-<!-- SCRIPTS -->
-<script>
-document.getElementById("menu-btn").addEventListener("click", () => {
-  document.getElementById("mobile-menu").classList.toggle("hidden");
-});
-
-// Fade Sections
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-});
-document.querySelectorAll('.fade-section').forEach(sec=>observer.observe(sec));
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+        window.onscroll = function() {
+            var nav = document.getElementById('navbar');
+            if (window.pageYOffset > 100) {
+                nav.classList.add("scrolled");
+            } else {
+                nav.classList.remove("scrolled");
+            }
+        };
+    </script>
 </body>
 </html>
-
-
-
